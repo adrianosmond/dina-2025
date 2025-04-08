@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image to 2D Array</title>
+  </head>
+  <body>
+    <h1>Select an Image</h1>
+    <input type="file" id="imageInput" accept="image/*" />
+    <script>
+      const thirtyEight = [
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1,
+        0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+        1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0,
+        0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1,
+        0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1,
+        1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1,
+        1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0,
+        0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1,
+        0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1,
+        0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1,
+        0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1,
+        1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0,
+        1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0,
+        0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1,
+        0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1,
+        0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+        0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0,
+        0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1,
+        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0,
+        1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1,
+      ];
+
+      function imageTo2DArray(image) {
+        // Create a canvas element to draw the image
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas size to match image dimensions
+        canvas.width = image.width;
+        canvas.height = image.height;
+
+        const multiplier = image.width / 25;
+
+        // Draw the image on the canvas
+        ctx.drawImage(image, 0, 0, image.width, image.height);
+
+        // Get image data from the canvas
+        const imageData = ctx.getImageData(0, 0, image.width, image.height);
+        const data = imageData.data;
+
+        // Initialize a 2D array to store 1s and 0s
+        const result = [];
+
+        // Loop through the image data and convert to 2D array
+        for (let y = 0; y < image.height; y += multiplier) {
+          const row = [];
+          for (let x = 0; x < image.width; x += multiplier) {
+            const index = (y * image.width + x) * 4; // RGBA index
+            const red = data[index];
+            const green = data[index + 1];
+            const blue = data[index + 2];
+
+            // Check if the pixel is black or white
+            if (red > 128 && green > 128 && blue > 128) {
+              row.push(1); // White pixel
+            } else {
+              row.push(0); // Black pixel
+            }
+          }
+          result.push(row);
+        }
+
+        return result;
+      }
+
+      function convertToMultiDimensionalArray(arr) {
+        const result = [];
+        const chunkSize = 6;
+
+        for (let i = 0; i < arr.length; i += chunkSize) {
+          result.push(arr.slice(i, i + chunkSize));
+        }
+
+        while (result.at(-1).length < chunkSize) {
+          result.at(-1).push(1);
+        }
+
+        return result;
+      }
+
+      // Get the file input element
+      const imageInput = document.getElementById('imageInput');
+
+      // Listen for file input changes
+      imageInput.addEventListener('change', function (event) {
+        const file = event.target.files[0]; // Get the selected file
+        if (file) {
+          // Create an image element to load the file
+          const image = new Image();
+          const reader = new FileReader();
+
+          // Once the file is read as a data URL, load it into the image
+          reader.onload = function (e) {
+            image.src = e.target.result;
+
+            // Once the image is loaded, convert it to a 2D array
+            image.onload = function () {
+              const binaryArray = imageTo2DArray(image).flat();
+              // console.log(binaryArray); // Log the 2D array
+              // console.log(JSON.stringify(binaryArray, null, 2));
+              const xor = thirtyEight.map(
+                (c, i) => binaryArray[i] ^ thirtyEight[i],
+              );
+
+              const code = convertToMultiDimensionalArray(xor).map((chars) =>
+                String.fromCharCode(parseInt(chars.join(''), 2) + 58),
+              );
+              console.log(code.join(''));
+            };
+          };
+
+          // Read the image file as a data URL
+          reader.readAsDataURL(file);
+        }
+      });
+    </script>
+  </body>
+</html>

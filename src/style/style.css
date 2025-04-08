@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 html {
-  font-size: clamp(20px, calc(20px + 1vw), 36px);
+  font-size: clamp(20px, calc(20px + 1vw), 28px);
 }
 
 body {
@@ -11,4 +11,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --mouse-x: 0;
+  --mouse-y: 0;
 }
